@@ -1,0 +1,51 @@
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+indent-width = 4
+exclude = [
+    "migrations/",
+    "tests/snapshots/",
+    "__pycache__/",
+    "venv/",
+    "alembic/",
+    "**/cli/**",
+    "notebooks/*.ipynb",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle エラー
+    "F",   # pyflakes（未使用インポートなど）
+    "I",   # isort（インポート順）
+    "B",   # バグの可能性がある実装の検出
+    "N",   # 命名規則
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "W",   # pycodestyle warnings
+    "Q",   # flake8-quiet-fstring
+    "A",   # flake8-annotations
+    "T",   # flake8-typing-imports
+    "D"    # flake8-docstrings
+]
+ignore = [
+    "B008",  # FastAPIのDependsの警告を無視
+    "C901",  # 関数の複雑度に関する警告を無視
+    "D100",  # モジュールのdocstring警告を無視
+    "D103",  # 関数のdocstring警告を無視
+    "D104",  # パブリックパッケージのdocstring警告を無視
+    "D203",  # one-blank-line-before-classを無視
+    "D213",  # multi-line-summary-second-lineを無視
+    "F401",  # 一旦未使用ファイルの警告を無視
+    "E501",  # 文字列の長さ制限は削除
+    "T201",  # printエラーは無視
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["F401"]
+"app/api/**/*.py" = ["F401"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
