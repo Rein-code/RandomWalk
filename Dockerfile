@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    fonts-ipaexfont \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
